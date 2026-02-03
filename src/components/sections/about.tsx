@@ -3,31 +3,35 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Database, Layout, Smartphone } from "lucide-react";
-
-const skills = [
-  {
-    category: "Frontend",
-    icon: <Layout className="w-6 h-6 text-blue-500" />,
-    items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
-  },
-  {
-    category: "Backend",
-    icon: <Database className="w-6 h-6 text-green-500" />,
-    items: ["Node.js", "PostgreSQL", "Prisma", "Supabase", "Server Actions"],
-  },
-  {
-    category: "Mobile",
-    icon: <Smartphone className="w-6 h-6 text-purple-500" />,
-    items: ["React Native", "Expo", "PWA"],
-  },
-  {
-    category: "Tools",
-    icon: <Code2 className="w-6 h-6 text-orange-500" />,
-    items: ["Git", "Docker", "VS Code", "Figma", "Vercel"],
-  },
-];
+import { useLanguage } from "@/components/language-provider";
 
 export function About() {
+  const { translations } = useLanguage();
+  const t = translations.landing.about;
+
+  const skills = [
+    {
+      category: t.skills.frontend,
+      icon: <Layout className="w-6 h-6 text-blue-500" />,
+      items: [t.items.react, t.items.nextjs, t.items.tailwind, t.items.framer, t.items.typescript],
+    },
+    {
+      category: t.skills.backend,
+      icon: <Database className="w-6 h-6 text-green-500" />,
+      items: [t.items.nodejs, t.items.mongodb, t.items.express, t.items.prisma, t.items.supabase, t.items.serverActions],
+    },
+    {
+      category: t.skills.mobile,
+      icon: <Smartphone className="w-6 h-6 text-purple-500" />,
+      items: [t.items.reactNative, t.items.expo, t.items.pwa],
+    },
+    {
+      category: t.skills.tools,
+      icon: <Code2 className="w-6 h-6 text-orange-500" />,
+      items: [t.items.git, t.items.vscode, t.items.figma, t.items.vercel],
+    },
+  ];
+
   return (
     <section id="about" className="py-20 section-padding container mx-auto">
       <motion.div
@@ -38,10 +42,9 @@ export function About() {
         className="max-w-4xl mx-auto space-y-12"
       >
         <div className="text-center space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold font-outfit">About Me</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-outfit">{t.title}</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            I build accessible, pixel-perfect, and performant web applications. 
-            With a focus on user experience and modern technologies, I transform ideas into reality.
+            {t.description}
           </p>
         </div>
 

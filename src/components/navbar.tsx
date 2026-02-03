@@ -5,6 +5,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ModeToggle } from "@/components/mode-toggle";
+import { LanguageToggle } from "@/components/language-toggle";
+import { useLanguage } from "@/components/language-provider";
 
 const navItems = [
   { name: "About", href: "/about" },
@@ -13,6 +16,7 @@ const navItems = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
+  const { translations } = useLanguage();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +44,7 @@ export function Navbar() {
         )}
       >
         <Link href="/" className="text-xl font-bold tracking-tighter font-outfit">
-          Portfolio
+          {translations.navbar.portfolio}
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
@@ -50,12 +54,16 @@ export function Navbar() {
               href={item.href}
               className="text-sm font-medium hover:text-primary transition-colors"
             >
-              {item.name}
+              {translations.navbar[item.name.toLowerCase() as keyof typeof translations.navbar]}
             </Link>
           ))}
           <Button size="sm" className="rounded-full px-6" asChild>
-            <Link href="/contact">Get in Touch</Link>
+            <Link href="/contact">{translations.navbar.contact}</Link>
           </Button>
+          <div className="flex items-center gap-2 pl-2 border-l border-border/50">
+            <LanguageToggle />
+            <ModeToggle />
+          </div>
         </div>
       </nav>
     </motion.header>

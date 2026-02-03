@@ -6,6 +6,12 @@ import { TestimonialCarousel } from "@/components/sections/testimonial-carousel"
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/footer";
 import SplashCursor from "@/components/SplashCursor";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Abdalla Emad | Home",
+  description: "Explore the portfolio of Abdalla Emad, a MERN Full Stack Developer based in Mansoura, Egypt, featuring web projects and technical skills.",
+};
 
 export default function Home() {
   return (
