@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/icon.svg"
+  },
   title: {
     default: "Abdalla Emad | MERN Full Stack Developer",
     template: "%s | Abdalla Emad"
